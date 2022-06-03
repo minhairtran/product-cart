@@ -28,6 +28,11 @@ const cartSlice = createSlice({
         (removedProduct) => removedProduct.id === action.payload.id
       );
       removeInventoryInfo.numberOfInventories--;
+      if (removeInventoryInfo.numberOfInventories === 0) {
+        state.addedProductList = state.addedProductList.filter(
+          (addedProduct) => addedProduct.id !== removeInventoryInfo.id
+        );
+      }
     },
   },
 });
